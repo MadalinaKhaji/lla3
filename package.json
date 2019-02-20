@@ -1,0 +1,25 @@
+{
+  "name": "lla3",
+  "version": "1.0.0",
+  "description": "Language Learning Application ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MadalinaKhaji/lla3.git"
+  },
+  "author": "Maddie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MadalinaKhaji/lla3/issues"
+  },
+  "homepage": "https://github.com/MadalinaKhaji/lla3#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.14",
+    "nodemon": "^1.18.10"
+  }
+}
