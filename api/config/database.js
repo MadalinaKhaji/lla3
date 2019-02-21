@@ -1,4 +1,5 @@
-// using the db from lla2 
+// using a local mongodb database called lladb
+
 module.exports = {
-    database: 'mongodb://maddie:maddie@ds229790.mlab.com:29790/vocab_list_maddie'
+    url: 'mongodb://localhost:27017/lladb'
 };

@@ -1,31 +1,35 @@
 let express = require('express');
-let path = require('path');
-let bodyParser = require('body-parser');
-let cors = require('cors');
-let mongoose = require('mongoose');
-let config = require('./api/config/database');
-
-mongoose.connect(config.database, { useNewUrlParser: true });
-
-let db = mongoose.connection;
-
-db.on('connected', function () {
-    console.log('Connected to db: ' + config.database);
-});
-db.on('error', function (err) {
-    console.log('Db error: ' + err);
-});
 
 let app = express();
 
+let cors = require('cors');
+
 app.use(cors());
 
+let bodyParser = require('body-parser');
+
 app.use(bodyParser.json());
+
+let mongoose = require('mongoose');
+let config = require('./api/config/database');
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect(config.url, { useNewUrlParser: true })
+    .then(function () {
+        console.log('Succesfully connected to the db');
+    })
+    .catch(function (err) {
+        console.log('Error connecting to the db. Ending process..', err);
+        process.exit();
+    });
 
 app.use(function (req, res, next) {
     console.log(new Date().toString() + " => " + req.originalUrl + req.body);
     next();
 });
+
+let path = require('path');
 
 app.use(express.static(path.join(__dirname, './api/public')));
 
@@ -42,7 +46,7 @@ app.get('/api', function (req, res) {
     );
 });
 
-let wordRoute = require('./api/routes/words');
+let wordRoute = require('./api/routes/word.routes');
 
 app.use('/api', wordRoute);
 
