@@ -88,9 +88,4 @@ router.delete('/word', function(req, res) {
     })
 });
 
-
-router.get('/error', function(req, res) {
-    throw new Error('This a forced error to test 500.');
-})
-
 module.exports = router;
