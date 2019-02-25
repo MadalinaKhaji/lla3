@@ -4,6 +4,7 @@
   "description": "node restful api",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon --exec babel-node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +22,11 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.14",
-    "nodemon": "^1.18.10",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
