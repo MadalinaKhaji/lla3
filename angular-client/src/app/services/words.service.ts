@@ -8,7 +8,7 @@ const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-const apiUrl = '/api/word';
+const apiUrl = 'http://localhost:3000/api/words';
 
 @Injectable({
   providedIn: 'root'

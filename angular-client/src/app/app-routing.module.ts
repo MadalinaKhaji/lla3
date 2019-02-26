@@ -8,7 +8,7 @@ import { WordAddComponent } from './components/word-crud/word-add/word-add.compo
 import { WordEditComponent } from './components/word-crud/word-edit/word-edit.component';
 
 const routes: Routes = [
-  { path: "", component: DashboardComponent },
+  { path: "", component: WordsComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "about", component: AboutComponent },
   { path: "words", component: WordsComponent },

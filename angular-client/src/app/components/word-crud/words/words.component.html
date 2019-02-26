@@ -1,3 +1,33 @@
-<p>
-  words works!
-</p>
+<div class="card">
+  <div class="card-header">
+    My Words
+  </div>
+  <div class="card-body">
+    <a [routerLink]="['/word-add']" class="btn btn-primary">Add Word</a>
+    <a [routerLink]="['/dashboard']" class="btn btn-secondary" role="button">Back to Dashboard</a>
+    <div class="container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Word</th>
+              <th scope="col">Language</th>
+              <th scope="col">Translation</th>
+              <th scope="col">Category</th>
+              <th scope="col">Description</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let word of data">
+              <th scope="row"> {{ word.text }} </th>
+              <td> {{ word.lang }} </td>
+              <td> {{ word.translation }} </td>
+              <td> {{ word.category }} </td>
+              <td> {{ word.description }} </td>
+              <td> Update | Delete</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
