@@ -1,3 +1,22 @@
-<p>
-  word-detail works!
-</p>
+<a [routerLink]="['/words']" class="btn btn-secondary" role="button">Back to My Words</a>
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Word Details
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> {{ word.text }} </h5>
+    <hr>
+    <dl>
+      <dt>Language:</dt>
+      <dd> {{ word.lang }} </dd>
+      <dt>Translation:</dt>
+      <dd> {{ word.translation }} </dd>
+      <dt>Category:</dt>
+      <dd> {{ word.category }} </dd>
+      <dt>Description:</dt>
+      <dd> {{ word.description }} </dd>
+    </dl>
+    <a [routerLink]="['/word-edit', word._id]" class="btn btn-info">Edit</a>
+    <a (click)="deleteWord(word._id)" href="" class="btn btn-danger">Delete</a>
+  </div>
+</div>

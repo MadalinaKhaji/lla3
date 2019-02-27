@@ -10,23 +10,17 @@ import { Word } from 'src/app/models/word.model';
 export class WordsComponent implements OnInit {
 
   data: Word[] = [];
-  selectedWord: Word;
 
-  constructor(private wordService: WordsService) { }
+  constructor(private wordsService: WordsService) { }
 
   ngOnInit() {
-    this.wordService.getWords()
+    this.wordsService.getWords()
       .subscribe(res => {
         this.data = res;
         console.log(this.data);
       }, err => {
         console.log(err);
       });
-  }
-
-  selectWord(wordToSelect) {
-    this.selectedWord = wordToSelect;
-    console.log(this.selectedWord.text);
   }
 
 }
