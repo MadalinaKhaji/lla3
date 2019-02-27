@@ -10,6 +10,7 @@ import { Word } from 'src/app/models/word.model';
 export class WordsComponent implements OnInit {
 
   data: Word[] = [];
+  selectedWord: Word;
 
   constructor(private wordService: WordsService) { }
 
@@ -21,6 +22,11 @@ export class WordsComponent implements OnInit {
       }, err => {
         console.log(err);
       });
+  }
+
+  selectWord(wordToSelect) {
+    this.selectedWord = wordToSelect;
+    console.log(this.selectedWord.text);
   }
 
 }
