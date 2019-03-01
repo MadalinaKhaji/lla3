@@ -63,6 +63,38 @@ exports.findOne = function (req, res) {
         });
 };
 
+// Get all languages from words and remove duplicates 
+exports.findAllLanguages = function(req, res) {
+    Word.find( {}, { _id: 0, lang: 1} )
+        .then(data => {
+            if (!data) {
+                return res.status(404).send('Could not find word with lang: da-en');
+            }
+
+            // remove duplicates
+            let languages = {};
+            data.forEach(function(item) {
+                languages[item.lang] = languages[item.lang] || {};
+            });
+            JSON.stringify(languages);
+
+            // make the output data look pretty
+            let outputData = [];
+            for(let language in languages) {
+                outputData.push({lang: language});
+            }
+            JSON.stringify(outputData);
+            
+            res.status(200).send(outputData);
+        })
+        .catch(err => {
+            if (err.name === 'NotFound') {
+                return res.status(404).send('Could not find word with lang: da-en');
+            }
+            return res.status(500).send('Error getting word with lang');
+        });
+}
+
 // Update word by id
 exports.update = function (req, res) {
     if (!req.body) {
@@ -99,7 +131,7 @@ exports.update = function (req, res) {
                 return res.status(404).send('Could not find word with id: ' + req.params.wordId);
             }
             return res.status(500).send('Error getting word with id: ' + req.params.wordId);
-        })
+        });
 };
 
 // Delete word by id 
