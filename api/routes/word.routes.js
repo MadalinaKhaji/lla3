@@ -17,6 +17,9 @@ router.get('/words/:wordId', words.findOne);
 // I do not like how this route looks 
 router.get('/word/languages/', words.findAllLanguages);
 
+// Get all words by language 
+router.get('/word/languages/:language', words.findByLanguage);
+
 // Update word with id 
 router.put('/words/:wordId', words.update);
 

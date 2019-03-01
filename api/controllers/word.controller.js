@@ -63,6 +63,24 @@ exports.findOne = function (req, res) {
         });
 };
 
+// Get words by language 
+exports.findByLanguage = function (req, res) {
+    Word.find( { lang: req.params.language })
+        .then(data => {
+            if (!data) {
+                return res.status(404).send('Could not find word with id: ' + req.params.wordId);
+            }
+            res.status(200).send(data);
+        })
+        .catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send('Could not find word with id: ' + req.params.wordId);
+            }
+            return res.status(500).send('Error getting word with id: ' + req.params.wordId);
+        });
+};
+
+
 // Get all languages from words and remove duplicates 
 exports.findAllLanguages = function(req, res) {
     Word.find( {}, { _id: 0, lang: 1} )
