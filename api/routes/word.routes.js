@@ -20,6 +20,12 @@ router.get('/word/languages/', words.findAllLanguages);
 // Get all words by language 
 router.get('/word/languages/:language', words.findByLanguage);
 
+// Get all categories by language 
+router.get('/word/categories/:language', words.findCategoryByLanguage);
+
+// Get all words by category and  by language 
+router.get('/word/filter/:language&:category', words.findByCategoryAndLanguage);
+
 // Update word with id 
 router.put('/words/:wordId', words.update);
 

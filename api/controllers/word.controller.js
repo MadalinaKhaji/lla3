@@ -68,25 +68,24 @@ exports.findByLanguage = function (req, res) {
     Word.find( { lang: req.params.language })
         .then(data => {
             if (!data) {
-                return res.status(404).send('Could not find word with id: ' + req.params.wordId);
+                return res.status(404).send('Could not find words with language: ' + req.params.language);
             }
             res.status(200).send(data);
         })
         .catch(err => {
-            if (err.kind === 'ObjectId') {
-                return res.status(404).send('Could not find word with id: ' + req.params.wordId);
+            if (err.name === 'NotFound') {
+                return res.status(404).send('Could not find words with language: ' + req.params.language);
             }
-            return res.status(500).send('Error getting word with id: ' + req.params.wordId);
+            return res.status(500).send('Error getting words with language: ' + req.params.language);
         });
 };
-
 
 // Get all languages from words and remove duplicates 
 exports.findAllLanguages = function(req, res) {
     Word.find( {}, { _id: 0, lang: 1} )
         .then(data => {
             if (!data) {
-                return res.status(404).send('Could not find word with lang: da-en');
+                return res.status(404).send('Could not find words');
             }
 
             // remove duplicates
@@ -107,11 +106,60 @@ exports.findAllLanguages = function(req, res) {
         })
         .catch(err => {
             if (err.name === 'NotFound') {
-                return res.status(404).send('Could not find word with lang: da-en');
+                return res.status(404).send('Could not find words');
             }
-            return res.status(500).send('Error getting word with lang');
+            return res.status(500).send('Error getting words');
         });
 }
+
+// Get word categories by language and remove duplicates 
+exports.findCategoryByLanguage = function (req, res) {
+    Word.find( {}, { _id: 0,  category: 1} ).find({lang: req.params.language})
+        .then(data => {
+            if (!data) {
+                return res.status(404).send('Could not find words');
+            }
+
+            // remove duplicates
+            let categories = {};
+            data.forEach(function(item) {
+                categories[item.category] = categories[item.category] || {};
+            });
+            JSON.stringify(categories);
+
+            // make the output data look pretty
+            let outputData = [];
+            for(let cat in categories) {
+                outputData.push({category: cat});
+            }
+            JSON.stringify(outputData);
+            
+            res.status(200).send(outputData);
+        })
+        .catch(err => {
+            if (err.name === 'NotFound') {
+                return res.status(404).send('Could not find words');
+            }
+            return res.status(500).send('Error getting words');
+        });
+};
+
+// Get words by category and language
+exports.findByCategoryAndLanguage = function (req, res) {
+    Word.find({ lang: req.params.language, category: req.params.category})
+        .then(data => {
+            if (!data) {
+                return res.status(404).send('Could not find words');
+            }
+            res.status(200).send(data);
+        })
+        .catch(err => {
+            if (err.name === 'NotFound') {
+                return res.status(404).send('Could not find words');
+            }
+            return res.status(500).send('Error getting words');
+        });
+};
 
 // Update word by id
 exports.update = function (req, res) {
