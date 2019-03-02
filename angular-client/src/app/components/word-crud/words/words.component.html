@@ -1,7 +1,7 @@
 <div class="container">
   <h1>My Words</h1>
-  <a [routerLink]="['/word-add']" class="btn btn-primary">Add Word</a>
-  <a [routerLink]="['/dashboard']" class="btn btn-secondary" role="button">Back to Dashboard</a>
+  <a [routerLink]="['/word-add']" class="btn btn-primary"><i class="fas fa-plus"></i> Add Word</a>
+  <a [routerLink]="['/dashboard']" class="btn btn-secondary" role="button"><i class="far fa-arrow-alt-circle-left"></i> Back to Dashboard</a>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -16,7 +16,7 @@
         <td scope="row"> {{ word.text }} </td>
         <td scope="row"> {{ word.lang }} </td>
         <td scope="row"> {{ word.category }} </td>
-        <td scope="row"><a [routerLink]="['/word-detail', word._id]">Details</a></td>
+        <td scope="row"><a [routerLink]="['/word-detail', word._id]"><i class="fas fa-info-circle"></i> Details</a></td>
       </tr>
     </tbody>
   </table>

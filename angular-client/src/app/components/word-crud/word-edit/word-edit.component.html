@@ -23,6 +23,6 @@
     <label>Description</label>
     <input type="text" formControlName="description" class="form-control">
   </div>
-  <button type="submit" [disabled]="!wordForm.valid" class="btn btn-primary">Edit Word</button>
-  <a [routerLink]="['/words']" class="btn btn-secondary" role="button">Back to My Words</a>
+  <button type="submit" [disabled]="!wordForm.valid" class="btn btn-primary"><i class="fas fa-edit"></i> Edit Word</button>
+  <a [routerLink]="['/words']" class="btn btn-secondary" role="button"><i class="far fa-arrow-alt-circle-left"></i> Back to My Words</a>
 </form>
