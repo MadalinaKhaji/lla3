@@ -1,10 +1,9 @@
 {
-  "name": "lla3",
-  "version": "1.0.0",
-  "description": "node restful api",
+  "name": "api-lla3",
+  "version": "2.0.0",
+  "description": "lla3 rest api",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,7 +11,7 @@
     "url": "git+https://github.com/MadalinaKhaji/lla3.git"
   },
   "author": "Maddie",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MadalinaKhaji/lla3/issues"
   },
@@ -21,12 +20,12 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mongoose": "^5.4.14",
+    "mongoose": "^5.4.16",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10",
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.10"
   }
 }

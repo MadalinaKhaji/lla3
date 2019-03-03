@@ -1,4 +1,4 @@
-let Word = require('../models/word.model');
+let Word = require('./word.model');
 
 // Create and save new word to the db
 exports.create = function (req, res) {

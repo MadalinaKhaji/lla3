@@ -16,9 +16,15 @@ Edit: Upon writing this, I realized that I should have just used Git to revert m
 
 ## Technologies 
 * Angular
+* Bootstrap
+* Express.js 
 * MongoDB 
 * Node.js
-* Express.js 
+
 
 ## Setup 
 Information will be added as the project develops..
+
+## API 
+- `/api/words` - Get all words 
+- `/api/words/:id` - Get a word with the specified id 

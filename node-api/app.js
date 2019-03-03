@@ -11,7 +11,7 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 let mongoose = require('mongoose');
-let config = require('./api/config/database');
+let config = require('./config/database');
 
 mongoose.Promise = global.Promise;
 
