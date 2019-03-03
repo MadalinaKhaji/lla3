@@ -32,7 +32,7 @@ function getAllWords(req, res, next) {
 }
 
 function getWordById(req, res, next) {
-    Word.findById(req.params.wordId).then(data => {
+    Word.findById(req.params.id).then(data => {
         res.status(200).send(data);
     }).catch(next);
 }
@@ -79,7 +79,7 @@ function updateWord(req, res, next) {
     if (!req.body.category) {
         return res.status(400).send('Required value for: category!');
     }
-    Word.findByIdAndUpdate(req.params.wordId, {
+    Word.findByIdAndUpdate(req.params.id, {
         text: req.body.text,
         lang: req.body.lang,
         translation: req.body.translation,
@@ -91,7 +91,7 @@ function updateWord(req, res, next) {
 }
 
 function deleteWord(req, res, next) {
-    Word.findByIdAndRemove(req.params.wordId).then(data => {
+    Word.findByIdAndRemove(req.params.id).then(data => {
         res.status(200).send('Word deleted succesfully!');
     }).catch(next);
 }
