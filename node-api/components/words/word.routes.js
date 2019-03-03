@@ -1,35 +1,7 @@
 let express = require('express');
-
+let wordController = require('./word.controller');
 let router = express.Router();
 
-let words = require('../controllers/word.controller');
-
-// Create new word
-router.post('/words', words.create);
-
-// Get all words
-router.get('/words', words.findAll);
-
-// Get word by id 
-router.get('/words/:wordId', words.findOne);
-
-// Get all languages from all the words 
-// I do not like how this route looks 
-router.get('/word/languages/', words.findAllLanguages);
-
-// Get all words by language 
-router.get('/word/languages/:language', words.findByLanguage);
-
-// Get all categories by language 
-router.get('/word/categories/:language', words.findCategoryByLanguage);
-
-// Get all words by category and  by language 
-router.get('/word/filter/:language&:category', words.findByCategoryAndLanguage);
-
-// Update word with id 
-router.put('/words/:wordId', words.update);
-
-// Delete word with id
-router.delete('/words/:wordId', words.delete);
+router.use('/words', wordController);
 
 module.exports = router;
