@@ -1,0 +1,8 @@
+<p>
+  Select a language
+</p>
+
+<ul *ngFor="let language of data">
+  <li> {{ language.lang }} </li>
+  <li> <a [routerLink]="['/words', language.lang]">View Words</a></li>
+</ul>

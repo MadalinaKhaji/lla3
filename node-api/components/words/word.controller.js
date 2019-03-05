@@ -16,8 +16,8 @@ router.get('/filter/lang/cat/:language&:category', wordService.getWordsByLanguag
 
 router.post('/', wordService.createWord);
 
-router.put('/', wordService.updateWord);
+router.put('/:id', wordService.updateWord);
 
-router.delete('/', wordService.deleteWord);
+router.delete('/:id', wordService.deleteWord);
 
 module.exports = router;

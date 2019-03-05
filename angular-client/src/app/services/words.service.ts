@@ -66,4 +66,12 @@ export class WordsService {
         catchError(this.handleError<Word>('deleteWord'))
       );
   }
+
+  getLanguages() {
+    return this.http.get<Word[]>(apiUrl + '/filter/lang')
+    .pipe(
+    tap(heroes => console.log('Fetched languages.')),
+    catchError(this.handleError('get', []))
+    );
+  }
 }

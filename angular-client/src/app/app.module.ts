@@ -12,6 +12,7 @@ import { WordsComponent } from './components/word-crud/words/words.component';
 import { WordDetailComponent } from './components/word-crud/word-detail/word-detail.component';
 import { WordAddComponent } from './components/word-crud/word-add/word-add.component';
 import { WordEditComponent } from './components/word-crud/word-edit/word-edit.component';
+import { LanguagesComponent } from './components/languages/languages.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { WordEditComponent } from './components/word-crud/word-edit/word-edit.co
     WordsComponent,
     WordDetailComponent,
     WordAddComponent,
-    WordEditComponent
+    WordEditComponent,
+    LanguagesComponent
   ],
   imports: [
     BrowserModule,
