@@ -74,4 +74,15 @@ export class WordsService {
     catchError(this.handleError('get', []))
     );
   }
+
+  getWordsByLanguage(language) {
+    const url = `${apiUrl}/filter/lang/${language}`;
+    return this.http.get<Word[]>(url)
+    .pipe(
+      tap(_ => console.log('Fetched words by lang.')),
+      catchError(this.handleError('get', []))
+      );
+  }
+
+
 }
