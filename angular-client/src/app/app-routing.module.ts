@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: "words/:language", component: WordsComponent},
   { path: "word-detail/:id", component: WordDetailComponent },
   { path: "word-add", component: WordAddComponent },
+  { path: "word-add/:language", component: WordAddComponent },
   { path: "word-edit/:id", component: WordEditComponent }
 ];
 

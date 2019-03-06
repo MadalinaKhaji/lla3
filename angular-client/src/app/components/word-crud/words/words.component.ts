@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class WordsComponent implements OnInit {
 
   data: Word[] = [];
+  selectedLanguage: any;
 
   constructor(
     private wordsService: WordsService,
@@ -18,8 +19,9 @@ export class WordsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.route.snapshot.params['language']) {
-      this.wordsService.getWordsByLanguage(this.route.snapshot.params['language'])
+    this.selectedLanguage = this.route.snapshot.params['language'];
+    if(this.selectedLanguage) {
+      this.wordsService.getWordsByLanguage(this.selectedLanguage)
       .subscribe(res => {
         this.data = res;
         console.log(this.data);
@@ -35,5 +37,4 @@ export class WordsComponent implements OnInit {
         console.log(err);
       });
   }
-
 }

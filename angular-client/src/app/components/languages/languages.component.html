@@ -1,8 +1,17 @@
-<p>
-  Select a language
-</p>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Languages</h5>
+    <h6 class="card-subtitle mb-2 text-muted">A list of all the found languages</h6>
+    <p class="card-text">Please select a language to learn</p>
+    <span *ngFor="let language of data">
+      <button (click)="setSelectedLanguage(language.lang)" class="btn btn-primary"> {{ language.lang }} </button>
+    </span>
+    <p class="card-text text-muted">PS: Can't find what you're looking for? Add words in your target language</p>
+    <a [routerLink]="['/word-add']" class="card-link" href="#">Add new word</a>
+  </div>
+</div>
 
-<ul *ngFor="let language of data">
-  <li> {{ language.lang }} </li>
-  <li> <a [routerLink]="['/words', language.lang]">View Words</a></li>
-</ul>
+<div *ngIf="isSelected">
+  <h6>Options</h6>
+  <a [routerLink]="['/words', selectedLanguage]">View {{ selectedLanguage }} Words</a>
+</div>

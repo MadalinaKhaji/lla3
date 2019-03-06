@@ -1,11 +1,11 @@
-<h2>Add Word</h2>
+<h2>Add {{ selectedLanguage }} Word</h2>
 <form [formGroup]="wordForm" (ngSubmit)="onFormSubmit(wordForm.value)">
   <div class="form-group">
     <label>Text</label>
     <input type="text" placeholder="Enter text" formControlName="text" class="form-control">
     <span *ngIf="!wordForm.get('text').valid && wordForm.get('text').touched">Please enter text for word</span>
   </div>
-  <div class="form-group">
+  <div *ngIf="!selectedLanguage" class="form-group">
     <label>Language</label>
     <input type="text" placeholder="Enter language" formControlName="lang" class="form-control">
     <span *ngIf="!wordForm.get('lang').valid && wordForm.get('lang').touched">Please enter language for word</span>
@@ -24,5 +24,6 @@
     <input type="text" placeholder="Enter description" formControlName="description" class="form-control">
   </div>
   <button type="submit" [disabled]="!wordForm.valid" class="btn btn-primary"><i class="fas fa-plus"></i> Add Word</button>
-  <a [routerLink]="['/words']" class="btn btn-secondary" role="button"><i class="far fa-arrow-alt-circle-left"></i> Back to My Words</a>
+  <a *ngIf="!selectedLanguage" [routerLink]="['/dashboard']" class="btn btn-secondary" role="button"><i class="far fa-arrow-alt-circle-left"></i> Back to Dashboard</a>
+  <a *ngIf="selectedLanguage" [routerLink]="['/words', selectedLanguage]" class="btn btn-secondary" role="button"><i class="far fa-arrow-alt-circle-left"></i> Back to {{ selectedLanguage }} Words</a>
 </form>
