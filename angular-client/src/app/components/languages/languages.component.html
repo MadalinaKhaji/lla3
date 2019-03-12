@@ -4,14 +4,8 @@
     <h6 class="card-subtitle mb-2 text-muted">A list of all the found languages</h6>
     <p class="card-text">Please select a language to learn</p>
     <span *ngFor="let language of data">
-      <button (click)="setSelectedLanguage(language.lang)" class="btn btn-primary"> {{ language.lang }} </button>
+      <button class="btn btn-primary"> <a [routerLink]="['/words', language.lang]"> {{ language.lang }} </a> </button>
     </span>
-    <p class="card-text text-muted">PS: Can't find what you're looking for? Add words in your target language</p>
-    <a [routerLink]="['/word-add']" class="card-link" href="#">Add new word</a>
+    <p class="card-text text-muted">PS: Can't find what you're looking for? <a [routerLink]="['/word-add']" class="card-link" href="#">Add new words</a> in your target language</p>
   </div>
-</div>
-
-<div *ngIf="isSelected">
-  <h6>Options</h6>
-  <a [routerLink]="['/words', selectedLanguage]">View {{ selectedLanguage }} Words</a>
 </div>

@@ -10,8 +10,6 @@ import { Word } from '../../models/word.model';
 export class LanguagesComponent implements OnInit {
 
   data: Word[] = [];
-  selectedLanguage: any;
-  isSelected: Boolean = false;
 
   constructor(private wordsService: WordsService) { }
 
@@ -23,11 +21,5 @@ export class LanguagesComponent implements OnInit {
     }, err => {
       console.log(err);
     });
-  }
-
-  setSelectedLanguage(input) {
-    this.selectedLanguage = input;
-    this.isSelected = true;
-    console.log(this.selectedLanguage);
   }
 }
